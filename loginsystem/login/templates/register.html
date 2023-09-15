@@ -1,4 +1,4 @@
-{% extends "master.html" %}
+<!-- {% extends "master.html" %}
 
 {% block title %}
 Register - My Baseball Club
@@ -50,5 +50,26 @@ Register - My Baseball Club
     </div>
 </form>
 
+
+{% endblock %} -->
+
+{% extends "master.html" %}
+
+{% block title %}
+Register - My Baseball Club
+{% endblock %}
+
+{% block content %}
+<h1>Register into My Baseball Club</h1>
+
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <div class="m-2">
+        {{ form.as_p }}
+        <div class="d-flex mt-3">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
 
 {% endblock %}

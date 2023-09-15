@@ -4,6 +4,7 @@ from django.db import models
 class Usuario(AbstractUser):
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
 
     class Meta:
         db_table = 'usuarios'
