@@ -1,0 +1,55 @@
+{% extends "master.html" %}
+
+{% block title %}
+My Baseball Club
+{% endblock %}
+
+
+{% block content %}
+
+{% if messages %}
+  <div>
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="my-4">
+  <h1>My Baseball Club</h1>
+
+  <p>If your name does not appear on the list below, you can register <a href="register/">here</a></p>
+  <p>To log in to your account, click <a href="login/">here</a></p>
+</div>
+<h3>Users</h3>
+
+<table class="table table-hover table-bordered">
+  <thead class="">
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  {% for x in mydata %}
+  <tbody>
+    <tr>
+      <td>{{ x.id }}</td>
+      <td>{{ x.firstname }}</td>
+      <td>{{ x.lastname }}</td>
+      <td>{{ x.address }}</td>
+      <td>{{ x.city }}</td>
+      <td>{{ x.username }}</td>
+      <td>{{ x.password }}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}
