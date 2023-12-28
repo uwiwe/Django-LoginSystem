@@ -1,5 +1,0 @@
-# Ignorar entorno virtual (ajustar la ruta si es necesario)
-../myworld/
-
-# Ignorar archivo de configuración sensible
-.env

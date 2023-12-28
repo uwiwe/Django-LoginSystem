@@ -5,7 +5,7 @@ from .models import Usuario
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.hashers import make_password, checkpassword
+from django.contrib.auth.hashers import make_password, check_password
 from .forms import UsuarioForm
 import logging
 
@@ -19,7 +19,10 @@ def register(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)  # No guardamos todavía el usuario
+            password = form.cleaned_data.get('password')
+            user.set_password(password)  # Establecemos la contraseña con hash
+            user.save()  # Ahora sí guardamos el usuario con la contraseña hasheada
             messages.success(request, 'Usuario registrado con éxito.')
             return redirect('main')
         else:
